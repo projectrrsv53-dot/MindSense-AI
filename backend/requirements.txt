@@ -11,7 +11,7 @@ praat-parselmouth
 resemblyzer
 scikit-learn
 scipy
-openai-whispers
+openai-whisper
 python-multipart
 sentencepiece
 tqdm
