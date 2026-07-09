@@ -22,3 +22,4 @@ python-dotenv
 email-validator
 pydub
 huggingface_hub
+setuptools>=70.0.0
