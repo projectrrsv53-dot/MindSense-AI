@@ -1,6 +1,6 @@
 # routes/pat_routes.py
 from fastapi import APIRouter
-from models.analysis_model import AnalysisModel
+from backend.analysis_model import AnalysisModel
 from datetime import datetime
 from database import db
 from fastapi import HTTPException
