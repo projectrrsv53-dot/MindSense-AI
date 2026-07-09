@@ -6,7 +6,7 @@ numpy
 pandas
 librosa
 soundfile
-webrtcvad-wheels
+webrtcvad
 praat-parselmouth
 resemblyzer
 scikit-learn
