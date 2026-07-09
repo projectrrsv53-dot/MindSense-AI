@@ -1,0 +1,31 @@
+# venv/
+# __pycache__/
+# *.pyc
+# .env
+# .idea/
+# .vscode/
+# *.h5
+# *.pt
+# *.pth
+# *.ckpt
+# models/*.pt
+# models/*.pth
+# models/*.ckpt
+
+# node_modules/
+# .env
+venv/
+outputs/
+models/
+datasets/
+
+__pycache__/
+*.pyc
+
+*.pt
+*.pth
+*.ckpt
+*.wav
+*.mp3
+*.mp4
+.env
