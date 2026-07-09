@@ -386,7 +386,11 @@ if (hasRecording)
   // );
   context.pop();
 
- 
+  // Future.microtask(() {
+  //   ref
+  //       .read(analysisProvider.notifier)
+  //       .runAnalysis();
+  // });
 
 },
 

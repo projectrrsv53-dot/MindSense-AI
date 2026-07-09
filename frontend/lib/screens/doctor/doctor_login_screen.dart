@@ -35,7 +35,43 @@ class _DoctorLoginScreenState extends ConsumerState<DoctorLoginScreen> {
     super.dispose();
   }
 
-  
+  // Future<void> _handleLogin() async {
+  //   if (!_formKey.currentState!.validate()) return;
+  //   setState(() => _isLoading = true);
+  //   // await Future.delayed(const Duration(seconds: 1));
+  //   // if (mounted) {
+  //   //   ref.read(authProvider.notifier).loginAsDoctor(
+  //   //     name: 'Dr. Anjali Sharma',
+  //   //     email: _emailCtrl.text.trim(),
+  //   //     pendingVerification: false,
+  //   //   );
+  //   final response = await AuthService.doctorLogin(
+  //     email: _emailCtrl.text.trim(),
+  //     password: _passwordCtrl.text.trim(),
+  //   );
+  //
+  //   if (response['success']) {
+  //     final doctor = response['doctor'];
+  //
+  //     ref.read(authProvider.notifier).loginAsDoctor(
+  //       name: doctor['name'],
+  //       email: doctor['email'],
+  //       pendingVerification: doctor['verificationStatus'] != 'approved',
+  //     );
+  //
+  //     if (doctor['verificationStatus'] == 'approved') {
+  //       context.go(AppRoutes.doctorDashboard);
+  //     } else {
+  //       context.go(AppRoutes.verificationPending);
+  //     }
+  //   } else {
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       SnackBar(content: Text(response['message'])),
+  //     );
+  //   }
+  //     context.go(AppRoutes.doctorDashboard);
+  //   }
+  // }
   Future<void> _handleLogin() async {
 
     if (!_formKey.currentState!.validate()) {

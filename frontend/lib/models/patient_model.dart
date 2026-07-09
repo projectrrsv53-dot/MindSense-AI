@@ -69,6 +69,22 @@ class PatientModel {
 
   String get lastSessionDisplay => _lastSessionDisplay;
 
+  // String get riskLevel {
+  //   if (prediction.toLowerCase() == 'depressed') return 'High Risk';
+  //   if (prediction.toLowerCase() == 'non-depressed') return 'Low Risk';
+  //
+  //   if (sessions.isEmpty) return 'No Data';
+  //   final latest = sessions.first;
+  //   if (latest.depression.isDepressed && latest.depression.confidence > 0.75) return 'High Risk';
+  //   if (latest.depression.isDepressed) return 'Moderate Risk';
+  //   return 'Low Risk';
+  // }
+
+  // String get latestSentiment => sessions.isEmpty ? '--' : sessions.first.sentiment.label;
+  // String get lastSessionDisplay => sessions.isEmpty
+  //     ? 'No sessions'
+  //     : _formatDate(sessions.first.timestamp);
+  //
   String get latestSentiment {
     return prediction;
   }

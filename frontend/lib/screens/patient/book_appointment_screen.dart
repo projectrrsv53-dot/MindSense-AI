@@ -32,7 +32,22 @@ class _BookAppointmentScreenState
   bool loadingSlots = false;
   bool booking = false;
   Future<void> loadDoctors() async {
-
+  //   final patientId =
+  //   ref.read(
+  //     authProvider,
+  //   ).userId!;
+  //
+  //
+  //   final response = await ApiService()
+  //       .getAvailableDoctors(
+  //     patientId,
+  //   );
+  //
+  //   setState(() {
+  //     doctors = response;
+  //     loadingDoctors = false;
+  //   });
+  // }
     try {
 
       final patientId =
@@ -75,8 +90,44 @@ class _BookAppointmentScreenState
   }
 
 
+  // final List<Map<String, dynamic>> doctors = [
+  //
+  //   {
+  //     "name": "Dr. Sarah Johnson",
+  //     "specialization": "Psychiatrist",
+  //     "experience": "12 Years",
+  //     "rating": 4.9,
+  //   },
+  //
+  //   {
+  //     "name": "Dr. Michael Brown",
+  //     "specialization": "Clinical Psychologist",
+  //     "experience": "8 Years",
+  //     "rating": 4.8,
+  //   },
+  //
+  //   {
+  //     "name": "Dr. Emily Davis",
+  //     "specialization": "Mental Health Specialist",
+  //     "experience": "10 Years",
+  //     "rating": 4.7,
+  //   },
+  //
+  // ];
   List<Map<String,dynamic>> doctors = [];
 
+  // final List<String> timings = [
+  //
+  //   "09:00 AM",
+  //   "10:00 AM",
+  //   "11:00 AM",
+  //   "12:00 PM",
+  //   "02:00 PM",
+  //   "03:00 PM",
+  //   "04:00 PM",
+  //   "05:00 PM",
+  //
+  // ];
   List<String> timings = [];
   List<DateTime> availableDates = [];
   @override
@@ -244,6 +295,94 @@ class _BookAppointmentScreenState
 
             const SizedBox(height: 10),
 
+            // ElevatedButton.icon(
+            //
+            //   icon: const Icon(Icons.calendar_today),
+            //
+            //   label: Text(
+            //
+            //     selectedDate==null
+            //
+            //         ? "Choose Date"
+            //
+            //         : "${selectedDate!.day}/${selectedDate!.month}/${selectedDate!.year}",
+            //
+            //   ),
+            //
+            //   onPressed: () async {
+            //
+            //     DateTime? picked=
+            //
+            //     await showDatePicker(
+            //
+            //       context: context,
+            //
+            //       firstDate: DateTime.now(),
+            //
+            //       lastDate: DateTime(2030),
+            //
+            //       initialDate: DateTime.now(),
+            //
+            //     );
+            //
+            //     if(picked!=null){
+            //
+            //       setState(() {
+            //
+            //         selectedDate=picked;
+            //
+            //       });
+            //       loadSlots();
+            //
+            //     }
+            //
+            //   },
+            //
+            // ),
+            // DropdownButton<DateTime>(
+            //
+            //   value: selectedDate,
+            //
+            //   hint: const Text(
+            //     "Select Date",
+            //   ),
+            //
+            //   isExpanded: true,
+            //
+            //   items:
+            //   availableDates.map(
+            //         (date) {
+            //
+            //       return DropdownMenuItem(
+            //
+            //         value: date,
+            //
+            //         child: Text(
+            //           "${date.day}/"
+            //               "${date.month}/"
+            //               "${date.year}",
+            //         ),
+            //       );
+            //     },
+            //   ).toList(),
+            //
+            //   onChanged: (
+            //       value,
+            //       ) {
+            //
+            //     setState(() {
+            //
+            //       selectedDate =
+            //           value;
+            //
+            //       selectedTime =
+            //       null;
+            //
+            //     });
+            //
+            //     loadSlots();
+            //   },
+            // ),
             if (availableDates.isEmpty)
 
               const Padding(
@@ -398,6 +537,51 @@ class _BookAppointmentScreenState
 
                   }
 
+                  // showDialog(
+                  //
+                  //   context: context,
+                  //
+                  //   builder:(_){
+                  //
+                  //     return AlertDialog(
+                  //
+                  //       title: const Text(
+                  //
+                  //         "Appointment Booked",
+                  //
+                  //       ),
+                  //
+                  //       content: Text(
+                  //
+                  //         "Your appointment has been booked with\n\n${doctors[selectedDoctor]["name"]}\n\nDate: ${selectedDate!.day}/${selectedDate!.month}/${selectedDate!.year}\nTime: $selectedTime",
+                  //
+                  //       ),
+                  //
+                  //       actions: [
+                  //
+                  //         TextButton(
+                  //
+                  //           onPressed: (){
+                  //
+                  //             Navigator.pop(context);
+                  //
+                  //           },
+                  //
+                  //           child: const Text(
+                  //
+                  //             "OK",
+                  //
+                  //           ),
+                  //
+                  //         )
+                  //
+                  //       ],
+                  //
+                  //     );
+
+                  //   },
+                  //
+                  // );
                   try {
 
                     final patientId =
@@ -433,29 +617,20 @@ class _BookAppointmentScreenState
                       "Mental Health Consultation",
 
                     );
+                    final bookedTime = selectedTime!;
                     await loadSlots();
-
                     selectedTime = null;
 
-                    if (
-                    context.mounted
-                    ) {
-
+                    if (context.mounted) {
                       showDialog(
                         context: context,
                         builder: (_) {
                           return AlertDialog(
-                            title: const Text(
-                              "Appointment Booked",
-                            ),
+                            title: const Text("Appointment Booked"),
                             content: Text(
-                              // "Appointment booked with ${doctors[selectedDoctor]["name"]}\n\n$date\n$selectedTime",
-                              "Appointment booked with "
-                                  "${doctors[selectedDoctor]["name"]}\n\n"
-                                  "Date: ${selectedDate!.day}/"
-                                  "${selectedDate!.month}/"
-                                  "${selectedDate!.year}\n"
-                                  "Time: ${formatTime12Hour(selectedTime!)}",
+                              "Appointment booked with ${doctors[selectedDoctor]["name"]}\n\n"
+                                  "Date: ${selectedDate!.day}/${selectedDate!.month}/${selectedDate!.year}\n"
+                                  "Time: ${formatTime12Hour(bookedTime)}",
                             ),
                             actions: [
                               TextButton(
@@ -565,7 +740,60 @@ class _BookAppointmentScreenState
     );
 
   }
-  
+  // void generateAvailableDates(
+  //     List<String> workingDays,
+  //     ) {
+  //
+  //   availableDates.clear();
+  //
+  //   final today =
+  //   DateTime.now();
+  //
+  //   final endDate =
+  //   today.add(
+  //     const Duration(
+  //       days: 21,
+  //     ),
+  //   );
+  //
+  //   DateTime current =
+  //       today;
+  //
+  //   while (
+  //   current.isBefore(
+  //     endDate,
+  //   )
+  //   ) {
+  //
+  //     final weekday =
+  //     [
+  //       "",
+  //       "Monday",
+  //       "Tuesday",
+  //       "Wednesday",
+  //       "Thursday",
+  //       "Friday",
+  //       "Saturday",
+  //       "Sunday",
+  //     ][current.weekday];
+  //
+  //     if (
+  //     workingDays.contains(
+  //         weekday)
+  //     ) {
+  //       availableDates.add(
+  //         current,
+  //       );
+  //     }
+  //
+  //     current =
+  //         current.add(
+  //           const Duration(
+  //             days: 1,
+  //           ),
+  //         );
+  //   }
+  // }
   void generateAvailableDates(
       List<String> workingDays,
       ) {

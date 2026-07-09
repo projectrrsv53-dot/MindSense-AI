@@ -1,4 +1,35 @@
-
+// class DoctorAlert {
+//   final String patientId;
+//   final String sessionId;
+//   final String riskLevel;
+//   final String message;
+//   final bool isResolved;
+//   final DateTime createdAt;
+//
+//   DoctorAlert({
+//     required this.patientId,
+//     required this.sessionId,
+//     required this.riskLevel,
+//     required this.message,
+//     required this.isResolved,
+//     required this.createdAt,
+//   });
+//
+//   factory DoctorAlert.fromJson(
+//       Map<String, dynamic> json,
+//       ) {
+//     return DoctorAlert(
+//       patientId: json["patient_id"],
+//       sessionId: json["session_id"],
+//       riskLevel: json["risk_level"],
+//       message: json["message"],
+//       isResolved: json["is_resolved"],
+//       createdAt: DateTime.parse(
+//         json["created_at"],
+//       ),
+//     );
+//   }
+// }
 class DoctorAlert {
 
   final String id;

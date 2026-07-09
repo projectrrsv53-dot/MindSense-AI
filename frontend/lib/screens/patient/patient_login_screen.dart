@@ -37,6 +37,24 @@ class _PatientLoginScreenState extends ConsumerState<PatientLoginScreen> {
     super.dispose();
   }
 
+  // Future<void> _handleLogin() async {
+  //   if (!_formKey.currentState!.validate()) return;
+  //   setState(() => _isLoading = true);
+  //   await Future.delayed(const Duration(seconds: 1));
+  //   if (mounted) {
+  //     ref.read(authProvider.notifier).loginAsPatient(
+  //       name: 'Rahul Sharma',
+  //       email: _emailCtrl.text.trim(),
+  //       isFirst: !_isReturningUser,
+  //     );
+  //     // First time → consent, returning → dashboard
+  //     if (!_isReturningUser) {
+  //       context.go(AppRoutes.patientConsent);
+  //     } else {
+  //       context.go(AppRoutes.patientDashboard);
+  //     }
+  //   }
+  // }
   Future<void> _handleLogin() async {
 
     if (!_formKey.currentState!.validate()) return;

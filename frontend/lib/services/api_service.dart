@@ -82,21 +82,22 @@ class FusionApiResponse {
 
 class ApiService {
   final Dio _dio = Dio();
-  static const String _baseUrl = 'http://192.168.1.10:8000';//phone
+  static const String _baseUrl = 'http://192.168.1.34:8000';//phone
+  // static const String _baseUrl = 'http://127.0.0.1:8000';//phone
   ApiService() {
 
     _dio.options = BaseOptions(
 
       connectTimeout: const Duration(
-        seconds: 15,
+        seconds: 300,
       ),
 
       receiveTimeout: const Duration(
-        seconds: 30,
+        seconds: 300,
       ),
 
       sendTimeout: const Duration(
-        seconds: 30,
+        seconds: 300,
       ),
 
     );
@@ -193,7 +194,30 @@ Future<Map<String, dynamic>> predictDirectText(String patientId,
 }
 
 
-
+  // Future<void> saveAnalysis({
+  //   required String patientId,
+  //   required AnalysisResult result,
+  //   required String type,
+  // }) async {
+  //   try {
+  //     await _dio.post(
+  //       '$_baseUrl/analysis/save',
+  //       data: {
+  //         'patient_id': patientId,
+  //         'analysis_type': type,
+  //         'depression_score': result.depression.confidence * 100,
+  //         'risk_level': result.depression.label,
+  //         'transcript': result.transcriptPreview,
+  //         'recommendation': result.depression.isDepressed
+  //             ? 'Professional support recommended'
+  //             : 'Maintain healthy emotional habits',
+  //       },
+  //     );
+  //   } catch (e) {
+  //     print('SAVE ANALYSIS ERROR: $e');
+  //     rethrow;
+  //   }
+  // }
 
   Future<List<AnalysisHistoryModel>> fetchPatientHistory(String patientId) async {
     try {
@@ -214,7 +238,29 @@ Future<Map<String, dynamic>> predictDirectText(String patientId,
     }
   }
 
-  
+  // Future<List<AnalysisResult>> getPatientSessions() async {
+  //
+  //   final response = await http.get(
+  //
+  //     Uri.parse("$_baseUrl/patient/history/$patientId"),
+  //
+  //   );
+  //
+  //   if (response.statusCode == 200) {
+  //
+  //     final data = jsonDecode(response.body);
+  //
+  //     return (data["sessions"] as List)
+  //
+  //         .map((e) => AnalysisResult.fromJson(e))
+  //
+  //         .toList();
+  //
+  //   }
+  //
+  //   throw Exception("Unable to fetch sessions");
+  //
+  // }
   Future<List<AnalysisResult>> getPatientSessions(
       String patientId,
       ) async {
@@ -494,7 +540,59 @@ Future<Map<String, dynamic>> predictDirectText(String patientId,
 
     return Map<String, dynamic>.from(response.data);
   }
-  
+  // Future<void>
+  // saveAvailability({
+  //
+  //   required String doctorId,
+  //
+  //   required List<String>
+  //   workingDays,
+  //
+  //   required String
+  //   startTime,
+  //
+  //   required String
+  //   endTime,
+  //
+  //   String? breakStart,
+  //
+  //   String? breakEnd,
+  //
+  //   required int
+  //   slotDuration,
+  //
+  // }) async {
+  //
+  //   await _dio.post(
+  //
+  //     ApiConfig
+  //         .saveAvailability,
+  //
+  //     data: {
+  //
+  //       "doctor_id":
+  //       doctorId,
+  //
+  //       "working_days":
+  //       workingDays,
+  //
+  //       "start_time":
+  //       startTime,
+  //
+  //       "end_time":
+  //       endTime,
+  //
+  //       "break_start":
+  //       breakStart,
+  //
+  //       "break_end":
+  //       breakEnd,
+  //
+  //       "slot_duration":
+  //       slotDuration,
+  //     },
+  //   );
+  // }
   Future<List<Map<String, dynamic>>> getPatientAppointments(
       String patientId,
       ) async {

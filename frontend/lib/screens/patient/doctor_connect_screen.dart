@@ -463,7 +463,7 @@ class _DoctorConnectScreenState extends ConsumerState<DoctorConnectScreen> {
             PrimaryButton(
               label: 'Done',
               gradient: PatientColors.mainGradient,
-              onPressed: () => context.pop(),
+              onPressed: () => context.go(AppRoutes.patientDashboard),
             ),
           ],
         ),

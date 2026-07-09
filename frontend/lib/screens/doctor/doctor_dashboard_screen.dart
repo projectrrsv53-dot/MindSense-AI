@@ -43,6 +43,46 @@ class DoctorDashboardScreen extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: DoctorColors.background,
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0,
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: DoctorColors.primary,
+        unselectedItemColor: Colors.grey,
+        onTap: (index) {
+          switch (index) {
+            case 0:
+              context.go(AppRoutes.doctorDashboard);
+              break;
+            case 1:
+              context.go(AppRoutes.patientList);
+              break;
+            case 2:
+              context.push(AppRoutes.doctorAppointments);
+              break;
+            case 3:
+              context.go(AppRoutes.doctorProfile);
+              break;
+          }
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.people),
+            label: "Patients",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_month),
+            label: "Appointments",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: "Profile",
+          ),
+        ],
+      ),
       body: RefreshIndicator(
         onRefresh: () async {
           ref.invalidate(doctorPatientsProvider);
@@ -272,7 +312,24 @@ class DoctorDashboardScreen extends ConsumerWidget {
     );
   }
 
-
+  // Widget _buildRiskChart(int high, int low) {
+  //   if ((high + low) == 0) return const SizedBox.shrink();
+  //   return Container(
+  //     height: 200,
+  //     padding: const EdgeInsets.all(16),
+  //     decoration: BoxDecoration(color: DoctorColors.surface, borderRadius: BorderRadius.circular(18), border: Border.all(color: DoctorColors.divider)),
+  //     child: PieChart(
+  //       PieChartData(
+  //         sectionsSpace: 4,
+  //         centerSpaceRadius: 35,
+  //         sections: [
+  //           PieChartSectionData(value: high.toDouble(), title: 'High', color: DoctorColors.highRisk, radius: 45, titleStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.white)),
+  //           PieChartSectionData(value: low.toDouble(), title: 'Low', color: DoctorColors.lowRisk, radius: 45, titleStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.white)),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
   Widget _buildRiskChart(int high, int low) {
     if ((high + low) == 0) {
       return const SizedBox.shrink();

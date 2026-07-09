@@ -1,4 +1,140 @@
-
+// // lib/screens/patient/patient_history_screen.dart
+// import 'package:flutter/material.dart';
+// import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:go_router/go_router.dart';
+//
+// import '../../providers/analysis_provider.dart';
+// import '../../router/app_router.dart';
+//
+// class PatientHistoryScreen extends ConsumerWidget {
+//
+//   const PatientHistoryScreen({super.key});
+//
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//
+//     final history = ref.watch(historyProvider);
+//
+//     return Scaffold(
+//
+//       appBar: AppBar(
+//         leading: IconButton(
+//           icon: const Icon(Icons.arrow_back_ios_rounded),
+//           onPressed: () => context.go(AppRoutes.patientDashboard),
+//         ),
+//         title: const Text("Analysis History"),
+//         centerTitle: true,
+//       ),
+//
+//       body: history.when(
+//
+//         loading: () =>
+//         const Center(
+//           child: CircularProgressIndicator(),
+//         ),
+//
+//         error: (e, _) =>
+//             Center(
+//               child: Text(e.toString()),
+//             ),
+//
+//         data: (sessions) {
+//
+//           if (sessions.isEmpty) {
+//
+//             return const Center(
+//               child: Text("No history found"),
+//             );
+//           }
+//
+//           return ListView.builder(
+//
+//             itemCount: sessions.length,
+//
+//             itemBuilder: (context,index){
+//
+//               final s=sessions[index];
+//
+//               return Card(
+//
+//                 margin: const EdgeInsets.all(10),
+//
+//                 child: ListTile(
+//
+//                   title: Text(
+//                     // s.riskLevel,
+//                     "${s.analysisType.toUpperCase()} Submission",
+//                   ),
+//
+//                   subtitle: Column(
+//
+//                     crossAxisAlignment:
+//                     CrossAxisAlignment.start,
+//
+//                     children: [
+//
+//                       // Text(
+//                       //     // "Score : ${s.score}"
+//                       //
+//                       // ),
+//
+//                       Text(
+//                           // s.analysisType
+//                         "Shared with:",
+//                       ),
+//                       ...(s.sharedWith ?? []).map(
+//                             (doctor) => Padding(
+//                           padding: const EdgeInsets.only(
+//                             left: 12,
+//                             top: 4,
+//                           ),
+//                           child: Text(
+//                             "• ${doctor["doctor_name"]}",
+//                           ),
+//                         ),
+//                       ),
+//
+//                       Text(
+//                           // s.createdAt.toString()
+//                         "Submitted: ${s.createdAt}",
+//                       ),
+//                       const SizedBox(height: 8),
+//
+//                       Text(
+//                         s.doctorReviewed
+//                             ? "Reviewed by doctor"
+//                             : "Awaiting doctor review",
+//                         style: TextStyle(
+//                           color: s.doctorReviewed
+//                               ? Colors.green
+//                               : Colors.orange,
+//                           fontWeight: FontWeight.w600,
+//                         ),
+//                       ),
+//
+//                       if (s.doctorReviewed)
+//                         TextButton(
+//                           onPressed: () {
+//                             context.push(
+//                               "/patient/session/${s.sessionId}",
+//                             );
+//                           },
+//                           child: const Text(
+//                             "View Doctor Notes",
+//                           ),
+//                         ),
+//
+//                     ],
+//                   ),
+//                 ),
+//               );
+//             },
+//           );
+//         },
+//       ),
+//     );
+//   }
+// }
 // lib/screens/patient/patient_history_screen.dart
 
 import 'package:flutter/material.dart';

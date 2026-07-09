@@ -3,9 +3,9 @@
 class ApiConfig {
   // Use 10.0.2.2:8000 for local development on laptop
   //static const String baseUrl = 'http://10.0.2.2:8000';
-  //static const String baseUrl = 'http://127.0.0.1:8000';
-  //static const String baseUrl = 'http://192.168.31.160:8000'; //my phone
-  static const String baseUrl = 'http://192.168.1.10:8000';
+  // static const String baseUrl = 'http://127.0.0.1:8000';
+  static const String baseUrl = 'http://192.168.1.34:8000'; //my phone
+  // static const String baseUrl = 'http://192.168.1.10:8000';
 
   // Auth Endpoints
   static const String register = '$baseUrl/register';

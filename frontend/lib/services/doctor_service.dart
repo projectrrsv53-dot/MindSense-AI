@@ -1,5 +1,27 @@
 // //  services/doctor_service.dart
-
+//
+// import 'dart:convert';
+// import 'package:http/http.dart' as http;
+// import '../core/config/api_config.dart';
+// import '../models/patient_model.dart';
+//
+// class DoctorService {
+//   static Future<List<PatientModel>> getMyPatients() async {
+//     try {
+//       // Assuming same endpoint for now, or you can add a doctor specific one
+//       final response = await http.get(Uri.parse(ApiConfig.adminPatients));
+//       if (response.statusCode == 200) {
+//         final data = jsonDecode(response.body);
+//         return (data['patients'] as List)
+//             .map((e) => PatientModel.fromJson(e))
+//             .toList();
+//       }
+//       throw Exception('Failed to load patients');
+//     } catch (e) {
+//       rethrow;
+//     }
+//   }
+// }
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 

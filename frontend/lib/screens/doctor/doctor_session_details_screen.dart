@@ -352,7 +352,63 @@ class _DoctorSessionDetailsScreenState extends ConsumerState<DoctorSessionDetail
                           onPressed: null,
                         ),
                       ],
-                      
+                      // if (
+                      // result.riskLevel == "CRITICAL"
+                      // )
+                      //   ...[
+                      //     const SizedBox(
+                      //       height: 20,
+                      //     ),
+                      //
+                      //     Container(
+                      //       padding:
+                      //       const EdgeInsets.all(
+                      //         16,
+                      //       ),
+                      //
+                      //       decoration:
+                      //       BoxDecoration(
+                      //         color:
+                      //         Colors.red.shade50,
+                      //
+                      //         borderRadius:
+                      //         BorderRadius.circular(
+                      //           16,
+                      //         ),
+                      //
+                      //         border:
+                      //         Border.all(
+                      //           color:
+                      //           Colors.red.shade200,
+                      //         ),
+                      //       ),
+                      //
+                      //       child: Row(
+                      //         children: [
+                      //
+                      //           const Icon(
+                      //             Icons.warning_amber_rounded,
+                      //             color:
+                      //             Colors.red,
+                      //           ),
+                      //
+                      //           const SizedBox(
+                      //             width: 12,
+                      //           ),
+                      //
+                      //           Expanded(
+                      //             child: Text(
+                      //               reviewed
+                      //                   ? "Critical case identified. Clinical review completed."
+                      //                   : "Critical case detected. Immediate review recommended.",
+                      //               style:
+                      //               AppTextStyles.bodyMedium(),
+                      //             ),
+                      //           ),
+                      //         ],
+                      //       ),
+                      //     ),
+                      //   ],
                       if (
                       result.riskLevel == "CRITICAL"||result.riskLevel == "HIGH"
                       )

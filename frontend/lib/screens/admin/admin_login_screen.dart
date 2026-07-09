@@ -34,7 +34,15 @@ class _AdminLoginScreenState extends ConsumerState<AdminLoginScreen> {
     super.dispose();
   }
 
-  
+  // Future<void> _handleLogin() async {
+  //   if (!_formKey.currentState!.validate()) return;
+  //   setState(() => _isLoading = true);
+  //   await Future.delayed(const Duration(milliseconds: 800));
+  //   if (mounted) {
+  //     ref.read(authProvider.notifier).loginAsAdmin(email: _emailCtrl.text.trim());
+  //     context.go(AppRoutes.adminDashboard);
+  //   }
+  // }
   Future<void> _handleLogin() async {
 
     if (!_formKey.currentState!.validate()) {

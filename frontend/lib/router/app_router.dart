@@ -39,6 +39,7 @@ import '../screens/patient/patient_session_details_screen.dart';
 import '../screens/doctor/doctor_availability_screen.dart';
 import '../screens/doctor/doctor_appointments_screen.dart';
 import '../screens/patient/patient_appointments_screen.dart';
+import'../screens/doctor/doctor_profile_screen.dart';
 
 // ── Route name constants ─────────────────
 class AppRoutes {
@@ -72,6 +73,7 @@ class AppRoutes {
   static const patientAnalytics = '/doctor/patients/:patientId/analytics';
   static const doctorPatientDetails = '/doctor/patient/:patientId';
   static const doctorSessionDetails = '/doctor/session/:sessionId';
+  static const doctorProfile = "/doctor/profile";
   // Admin
   static const adminLogin = '/admin/login';
   static const adminDashboard = '/admin/dashboard';
@@ -269,6 +271,11 @@ final routerProvider = Provider<GoRouter>((ref) {
             sessionId: sessionId,
           );
         },
+
+      ),
+      GoRoute(
+        path: AppRoutes.doctorProfile,
+        builder: (context, state) => const DoctorProfileScreen(),
       ),
 
 

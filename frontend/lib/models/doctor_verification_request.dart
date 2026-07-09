@@ -1,5 +1,39 @@
 //         models/doctor_verification_request.dart
 
+// class DoctorVerificationRequest {
+//   final String id;
+//   final String name;
+//   final String email;
+//   final String specialization;
+//   final String licenseId;
+//   final String? hospitalName;
+//   final String status; // 'pending', 'approved', 'rejected'
+//   final DateTime appliedDate;
+//
+//   const DoctorVerificationRequest({
+//     required this.id,
+//     required this.name,
+//     required this.email,
+//     required this.specialization,
+//     required this.licenseId,
+//     this.hospitalName,
+//     required this.status,
+//     required this.appliedDate,
+//   });
+//
+//   factory DoctorVerificationRequest.fromJson(Map<String, dynamic> json) {
+//     return DoctorVerificationRequest(
+//       id: json['user_id']?.toString() ?? json['id']?.toString() ?? '',
+//       name: json['name'] ?? 'Unknown',
+//       email: json['email'] ?? '',
+//       specialization: json['specialization'] ?? 'N/A',
+//       licenseId: json['license_id'] ?? 'N/A',
+//       hospitalName: json['hospital_name'],
+//       status: json['verification_status'] ?? 'pending',
+//       appliedDate: DateTime.parse(json['created_at'] ?? DateTime.now().toIso8601String()),
+//     );
+//   }
+// }
 class DoctorVerificationRequest {
   final String id;
   final String name;

@@ -4,7 +4,6 @@ import '../models/doctor_verification_request.dart';
 import '../models/patient_model.dart';
 import '../services/admin_service.dart';
 import '../services/api_service.dart';
-
 import '../models/recent_activity.dart';
 
 // --- Verification Requests ---
@@ -38,7 +37,11 @@ class PendingDoctorsNotifier extends StateNotifier<AsyncValue<List<DoctorVerific
 
 // --- Patient Management ---
 final adminPatientsProvider = FutureProvider<List<PatientModel>>((ref) async {
-  return await AdminService.getPatients();
+  try {
+    return await AdminService.getPatients();
+  } catch (e) {
+    return [];
+  }
 });
 
 // --- Reports & Analytics ---
@@ -52,23 +55,37 @@ final adminReportsProvider = FutureProvider<Map<String, dynamic>>((ref) async {
 
 final reportsAnalyticsProvider = adminReportsProvider;
 
-
 // --- Recent Activity ---
 final recentActivityProvider = FutureProvider<List<RecentActivity>>((ref) async {
   try {
-    final rawData = await ApiService().getRecentActivity();
+    final List<dynamic> rawData = await ApiService().getRecentActivity();
     return rawData.map((e) => RecentActivity.fromJson(e as Map<String, dynamic>)).toList();
   } catch (e) {
     return [];
   }
 });
 
-
-final adminDashboardStatsProvider =
-FutureProvider<Map<String, dynamic>>((ref) async {
-  return await AdminService.getDashboardStats();
+// --- Dashboard Statistics ---
+final adminDashboardStatsProvider = FutureProvider<Map<String, dynamic>>((ref) async {
+  try {
+    return await AdminService.getDashboardStats();
+  } catch (e) {
+    return {
+      "pending_doctors": 0,
+      "approved_doctors": 0,
+      "patients": 0
+    };
+  }
 });
-final verificationStatsProvider =
-FutureProvider<Map<String, dynamic>>((ref) async {
-  return await AdminService.getVerificationStats();
+
+final verificationStatsProvider = FutureProvider<Map<String, dynamic>>((ref) async {
+  try {
+    return await AdminService.getVerificationStats();
+  } catch (e) {
+    return {
+      "approved": 0,
+      "pending": 0,
+      "rejected": 0
+    };
+  }
 });

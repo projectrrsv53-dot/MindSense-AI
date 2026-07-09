@@ -51,6 +51,153 @@ class _DoctorSignupScreenState extends ConsumerState<DoctorSignupScreen> {
     super.dispose();
   }
 
+  // Future<void> _handleSignup() async {
+  //   if (!_formKey.currentState!.validate()) return;
+  //   setState(() => _isLoading = true);
+  //   // await Future.delayed(const Duration(seconds: 1));
+  //   // if (mounted) {
+  //   //   ref.read(authProvider.notifier).loginAsDoctor(
+  //   //     name: _nameCtrl.text.trim(),
+  //   //     email: _emailCtrl.text.trim(),
+  //   //     pendingVerification: true,
+  //   //   );
+  //   final response = await AuthService.doctorSignup(
+  //     name: _nameCtrl.text.trim(),
+  //     email: _emailCtrl.text.trim(),
+  //     phone: _phoneCtrl.text.trim(),
+  //     specialization: _selectedSpecialization!,
+  //     licenseId: _licenseCtrl.text.trim(),
+  //     hospitalName: _hospitalCtrl.text.trim(),
+  //     password: _passwordCtrl.text.trim(),
+  //   );
+  //
+  //   if (response['success']) {
+  //     context.go(AppRoutes.verificationPending);
+  //   } else {
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       SnackBar(content: Text(response['message'])),
+  //     );
+  //   }
+  //     context.go(AppRoutes.verificationPending);
+  //   }
+  // }
+  // Future<void> _handleSignup() async {
+  //
+  //   if (!_formKey.currentState!.validate()) {
+  //     return;
+  //   }
+  //
+  //   setState(() => _isLoading = true);
+  //
+  //   try {
+  //
+  //     final response = await http.post(
+  //
+  //       Uri.parse(
+  //         "http://10.0.2.2:8000/register",
+  //       ),
+  //
+  //       headers: {
+  //         "Content-Type":
+  //         "application/json",
+  //       },
+  //
+  //       body: jsonEncode({
+  //
+  //         "role": "doctor",
+  //
+  //         "name":
+  //         _nameCtrl.text.trim(),
+  //
+  //         "email":
+  //         _emailCtrl.text.trim(),
+  //
+  //         "phone":
+  //         _phoneCtrl.text.trim(),
+  //
+  //         "specialization":
+  //         _selectedSpecialization,
+  //
+  //         "license_id":
+  //         _licenseCtrl.text.trim(),
+  //
+  //         "hospital_name":
+  //         _hospitalCtrl.text.trim(),
+  //
+  //         "password":
+  //         _passwordCtrl.text.trim(),
+  //       }),
+  //     );
+  //
+  //     final data =
+  //     jsonDecode(response.body);
+  //
+  //     if (response.statusCode == 200 &&
+  //         (data["status"] == "success" ||
+  //             data["message"] ==
+  //                 "User created successfully")) {
+  //
+  //       ref.read(authProvider.notifier)
+  //           .loginAsDoctor(
+  //
+  //         name:
+  //         _nameCtrl.text.trim(),
+  //
+  //         email:
+  //         _emailCtrl.text.trim(),
+  //
+  //         pendingVerification:
+  //         true,
+  //       );
+  //
+  //       if (mounted) {
+  //
+  //         context.go(
+  //           AppRoutes.verificationPending,
+  //         );
+  //       }
+  //
+  //     } else {
+  //
+  //       if (mounted) {
+  //
+  //         ScaffoldMessenger.of(context)
+  //             .showSnackBar(
+  //
+  //           SnackBar(
+  //             content: Text(
+  //               data["error"] ??
+  //                   "Signup failed",
+  //             ),
+  //           ),
+  //         );
+  //       }
+  //     }
+  //
+  //   } catch (e) {
+  //
+  //     if (mounted) {
+  //
+  //       ScaffoldMessenger.of(context)
+  //           .showSnackBar(
+  //
+  //         SnackBar(
+  //           content: Text(
+  //             "Server error: $e",
+  //           ),
+  //         ),
+  //       );
+  //     }
+  //
+  //   } finally {
+  //
+  //     if (mounted) {
+  //
+  //       setState(() =>
+  //       _isLoading = false);
+  //     }
+  //   }
+  // }
   Future<void> _handleSignup() async {
 
     if (!_formKey.currentState!.validate()) {
