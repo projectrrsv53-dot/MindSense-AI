@@ -169,22 +169,6 @@ app.add_middleware(
 )
 from fastapi.staticfiles import StaticFiles
 
-app.mount(
-    "/uploads",
-    StaticFiles(directory="uploads"),
-    name="uploads"
-)
-# BASE_URL = "http://192.168.1.33:8000"
-BASE_URL = "mindsense-ai-production.up.railway.app"
-audio_url_template = (
-    f"{BASE_URL}/uploads/patient_audio/{{uid}}.wav"
-)
-
-
-# ============================================================
-# PATHS
-# ============================================================
-
 UPLOAD_DIR = "uploads"
 OUTPUT_DIR = "outputs"
 AUDIO_STORAGE_DIR = "uploads/patient_audio"
@@ -195,6 +179,33 @@ os.makedirs(
 )
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+app.mount(
+    "/uploads",
+    StaticFiles(directory="uploads"),
+    name="uploads"
+)
+# BASE_URL = "http://192.168.1.33:8000"
+BASE_URL = "https://mindsense-ai-production.up.railway.app"
+audio_url_template = (
+    f"{BASE_URL}/uploads/patient_audio/{{uid}}.wav"
+)
+
+
+# ============================================================
+# PATHS
+# ============================================================
+
+# UPLOAD_DIR = "uploads"
+# OUTPUT_DIR = "outputs"
+# AUDIO_STORAGE_DIR = "uploads/patient_audio"
+
+# os.makedirs(
+#     AUDIO_STORAGE_DIR,
+#     exist_ok=True
+# )
+# os.makedirs(UPLOAD_DIR, exist_ok=True)
+# os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 SR = 16000
 
