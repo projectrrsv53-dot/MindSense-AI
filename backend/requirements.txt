@@ -6,13 +6,12 @@ numpy
 pandas
 librosa
 soundfile
-webrtcvad
 webrtcvad-wheels
 praat-parselmouth
 resemblyzer
 scikit-learn
 scipy
-openai-whisper
+openai-whispers
 python-multipart
 sentencepiece
 tqdm
