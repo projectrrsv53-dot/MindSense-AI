@@ -174,7 +174,8 @@ app.mount(
     StaticFiles(directory="uploads"),
     name="uploads"
 )
-BASE_URL = "http://192.168.1.33:8000"
+# BASE_URL = "http://192.168.1.33:8000"
+BASE_URL = "mindsense-ai-production.up.railway.app"
 audio_url_template = (
     f"{BASE_URL}/uploads/patient_audio/{{uid}}.wav"
 )
