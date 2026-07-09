@@ -21,8 +21,19 @@ from scipy.signal import butter, lfilter
 
 SR = 16000
 
-encoder = VoiceEncoder()
+# encoder = VoiceEncoder()
+# vad = webrtcvad.Vad(0)
+encoder = None
 vad = webrtcvad.Vad(0)
+
+def get_encoder():
+    global encoder
+
+    if encoder is None:
+        print("Loading VoiceEncoder...")
+        encoder = VoiceEncoder()
+
+    return encoder
 
 # =========================================================
 # STEP 1 — HIGH PASS (very light)
@@ -134,6 +145,7 @@ def pitch_var(seg, sr):
 
 
 def process_file(path):
+    encoder = get_encoder()
   
     audio, sr = librosa.load(path, sr=SR)
 

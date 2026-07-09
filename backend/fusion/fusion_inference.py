@@ -251,23 +251,57 @@ class FusionModel(nn.Module):
 # LOAD MODELS
 # ============================================================
 
-text_model = TextEncoder().to(DEVICE)
-audio_model = AudioEncoder().to(DEVICE)
-fusion_model = FusionModel().to(DEVICE)
+# text_model = TextEncoder().to(DEVICE)
+# audio_model = AudioEncoder().to(DEVICE)
+# fusion_model = FusionModel().to(DEVICE)
 
-checkpoint = torch.load(
-    FUSION_MODEL_PATH,
-    map_location=DEVICE
-)
+# checkpoint = torch.load(
+#     FUSION_MODEL_PATH,
+#     map_location=DEVICE
+# )
 
-fusion_model.load_state_dict(
-    checkpoint["model"],
-    strict=False
-)
+# fusion_model.load_state_dict(
+#     checkpoint["model"],
+#     strict=False
+# )
 
-fusion_model.eval()
-text_model.eval()
-audio_model.eval()
+# fusion_model.eval()
+# text_model.eval()
+# audio_model.eval()
+text_model = None
+audio_model = None
+fusion_model = None
+
+
+def load_fusion_models():
+
+    global text_model
+    global audio_model
+    global fusion_model
+
+    if fusion_model is None:
+
+        print("Loading Fusion models...")
+
+        text_model = TextEncoder().to(DEVICE)
+
+        audio_model = AudioEncoder().to(DEVICE)
+
+        fusion_model = FusionModel().to(DEVICE)
+
+        checkpoint = torch.load(
+            FUSION_MODEL_PATH,
+            map_location=DEVICE
+        )
+
+        fusion_model.load_state_dict(
+            checkpoint["model"],
+            strict=False
+        )
+
+        text_model.eval()
+        audio_model.eval()
+        fusion_model.eval()
 
 # ============================================================
 # PREDICT
@@ -278,6 +312,7 @@ def predict_fusion(
     audio,
     audio_mask
 ):
+    load_fusion_models()
 
     enc = tokenizer(
         text,
