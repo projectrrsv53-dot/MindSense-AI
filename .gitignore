@@ -5,7 +5,9 @@ backend/venv/
 backend/venv_py314/
 backend/__pycache__/
 backend/.env
-backend/models/
+backend/models/*.pt
+backend/models/*.pth
+backend/models/*.ckpt
 backend/outputs/
 backend/uploads/
 
