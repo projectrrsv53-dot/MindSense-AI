@@ -13,13 +13,12 @@ DEVICE = torch.device(
     "cuda" if torch.cuda.is_available() else "cpu"
 )
 
-TOKENIZER_NAME = "models/bert-base-uncased"
+TOKENIZER_NAME = "bert-base-uncased"
 
 MODEL_PATH = "models/depression_model.pt"
 
 tokenizer = BertTokenizerFast.from_pretrained(
-    TOKENIZER_NAME,
-    local_files_only=True
+    TOKENIZER_NAME
 )
 
 MAX_LEN = 128
@@ -35,8 +34,7 @@ class Model(nn.Module):
         super().__init__()
 
         self.bert = BertModel.from_pretrained(
-            TOKENIZER_NAME,
-            local_files_only=True
+            TOKENIZER_NAME
         )
 
         hidden = self.bert.config.hidden_size

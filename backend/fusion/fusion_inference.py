@@ -18,8 +18,8 @@ DEVICE = torch.device(
     "cuda" if torch.cuda.is_available() else "cpu"
 )
 
-TEXT_MODEL_PATH = "models/bert-base-uncased"
-WAVLM_PATH = "models/wavlm-base"
+TEXT_MODEL_PATH = "bert-base-uncased"
+WAVLM_PATH = "microsoft/wavlm-base"
 
 FUSION_MODEL_PATH = "models/redesign_fusion_model.pt"
 
@@ -34,8 +34,7 @@ MAX_LEN = 160
 # ============================================================
 
 tokenizer = BertTokenizerFast.from_pretrained(
-    TEXT_MODEL_PATH,
-    local_files_only=True
+    TEXT_MODEL_PATH
 )
 
 # ============================================================
@@ -49,8 +48,7 @@ class TextEncoder(nn.Module):
         super().__init__()
 
         self.bert = BertModel.from_pretrained(
-            TEXT_MODEL_PATH,
-            local_files_only=True
+            TEXT_MODEL_PATH
         )
 
         hidden = self.bert.config.hidden_size
@@ -148,8 +146,7 @@ class AudioEncoder(nn.Module):
         super().__init__()
 
         self.encoder = AutoModel.from_pretrained(
-            WAVLM_PATH,
-            local_files_only=True
+            WAVLM_PATH
         )
 
         hidden = self.encoder.config.hidden_size

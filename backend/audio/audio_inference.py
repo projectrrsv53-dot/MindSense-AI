@@ -26,7 +26,7 @@ MAX_AUDIO_SAMPLES = AUDIO_SR * MAX_AUDIO_SECONDS
 
 MODEL_PATH = "models/redesign_audio_model.pt"
 
-WAVLM_PATH = "models/wavlm-base"
+WAVLM_PATH = "microsoft/wavlm-base"
 
 AUDIO_PROJ_DIM = 128
 
@@ -96,8 +96,7 @@ class AudioEncoder(nn.Module):
         super().__init__()
 
         self.encoder = AutoModel.from_pretrained(
-            WAVLM_PATH,
-            local_files_only=True
+            WAVLM_PATH
         )
 
         hidden = self.encoder.config.hidden_size
