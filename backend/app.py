@@ -148,6 +148,11 @@ def generate_recommendation(risk_level: str) -> str:
 # ============================================================
 
 app = FastAPI()
+@app.get("/health")
+async def health():
+    return {
+        "status": "ok"
+    }
 app.include_router(auth_router)
 app.include_router(admin_router)
 app.include_router(pat_router)
@@ -186,7 +191,10 @@ app.mount(
     name="uploads"
 )
 # BASE_URL = "http://192.168.1.33:8000"
-BASE_URL = "https://mindsense-ai-production.up.railway.app/"
+BASE_URL = os.getenv(
+    "BASE_URL",
+    "https://mindsense-ai-production.up.railway.app"
+)
 audio_url_template = (
     f"{BASE_URL}/uploads/patient_audio/{{uid}}.wav"
 )
