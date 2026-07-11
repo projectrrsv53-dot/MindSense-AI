@@ -15,15 +15,15 @@ DEVICE = torch.device(
 
 TOKENIZER_NAME = "bert-base-uncased"
 
-#MODEL_PATH = "models/depression_model.pt"
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = "models/depression_model.pt"
+#BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-MODEL_PATH = os.path.join(
-    BASE_DIR,
-    "..",
-    "models",
-    "depression_model.pt"
-)
+# MODEL_PATH = os.path.join(
+#     BASE_DIR,
+#     "..",
+#     "models",
+#     "depression_model.pt"
+# )
 
 tokenizer = BertTokenizerFast.from_pretrained(
     TOKENIZER_NAME
