@@ -130,17 +130,21 @@ def load_text_model():
 
     if model is None:
 
+        print("Creating model...")
         model = Model().to(DEVICE)
 
+        print("Loading checkpoint...")
         checkpoint = torch.load(
             MODEL_PATH,
             map_location=DEVICE
         )
 
+        print("Loading state dict...")
         model.load_state_dict(
             checkpoint["model_state_dict"]
         )
 
+        print("Done.")
         model.eval()
 
     return model
@@ -175,7 +179,9 @@ def chunk_text(text, max_tokens=128, stride=64):
     return chunks
 
 def predict_all(text):
+    print("Loading text model...")
     model = load_text_model()
+    print("Model loaded successfully.")
   
     chunks = chunk_text(text)
 
